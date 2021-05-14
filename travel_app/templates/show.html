@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{travel.destination}}</h1>
+<p>Planned by: {{travel.user.name}}</p>
+<p>Description: {{travel.desc}}</p>
+<p>Start date: {{travel.start_date}}</p>
+<p>End date: {{travel.end_date}}</p>
+
+<h4 class="mt-5">Other people joining the travel</h4>
+{% for user in travel.traveler.all %}
+{% if user.id != travel.user.id %}
+<p>{{user.name}}</p>
+{% endif %}
+{% endfor %}
+
+{% endblock %}
